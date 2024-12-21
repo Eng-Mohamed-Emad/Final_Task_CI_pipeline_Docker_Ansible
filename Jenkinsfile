@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment {
-        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'mypass', usernameVariable: 'myuser')])
-    }
     stages {
         stage('Checkout') {
             steps {
@@ -15,7 +12,27 @@ pipeline {
         }
         stage('Build and Push Docker Image') {
             steps {
-                sh './docker_build_and_push.sh'
+                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'mypass', usernameVariable: 'myuser')]){
+ 
+                    sh"""docker build -t mohamedemadeldin101/my-weather-app-image .
+                        docker login -u ${myuser} -p ${mypass}'
+                        docker image Push mohamedemadeldin101/my-weather-app-image
+                    """
+                    
+                
+            }
+        }
+    }
+    
+    stage('cd') {
+            steps {
+                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'mypass', usernameVariable: 'myuser')]){
+ 
+                    sh"""
+                    docker login -u ${myuser} -p ${mypass}'
+                    docker run -d -p 5000:5000 --name my-app-container --env-file .env mohamedemadeldin101/my-weather-app-image
+                    """
+                
             }
         }
     }

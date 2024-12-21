@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')])
+        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'mypass', usernameVariable: 'myuser')])
     }
     stages {
         stage('Checkout') {

@@ -26,7 +26,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'mypass', usernameVariable: 'myuser')]) {
                     sh """
                         docker login -u ${myuser} -p ${mypass}
-                        docker run -d -p 5000:5000 --name my-app-container --env-file .env mohamedemadeldin101/my-weather-app-image
+                        docker run -d -p 5000:5000 --name my-app-container mohamedemadeldin101/my-weather-app-image
                     """
                 }
             }

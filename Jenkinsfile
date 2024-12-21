@@ -1,8 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_USERNAME = credentials('dockerhub')  // Jenkins credential ID for Docker username
-        DOCKER_PASSWORD = credentials('dockerhub')  // Jenkins credential ID for Docker password
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub')
     }
     stages {
         stage('Checkout') {
@@ -18,6 +17,12 @@ pipeline {
             steps {
                 sh './docker_build_and_push.sh'
             }
+        }
+    }
+    post {
+        always {
+            sh 'docker logout'
+            cleanWs()
         }
     }
 }

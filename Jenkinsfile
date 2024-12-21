@@ -19,7 +19,7 @@ pipeline {
         stage('Build and Push Docker Image') {
             steps {
                 sh '''
-                    echo $mypass | docker login -u $myuser --password-stdin
+                    
                     ./docker_build_and_push.sh
                     '''
             }

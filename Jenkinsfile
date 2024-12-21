@@ -15,10 +15,5 @@ pipeline {
                 sh './docker_build_and_push.sh'
             }
         }
-        post {
-        always {
-            cleanWs()
-        }
-    }
     }
 }

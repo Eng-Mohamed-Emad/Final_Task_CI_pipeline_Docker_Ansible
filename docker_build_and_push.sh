@@ -6,7 +6,9 @@ DOCKER_TAG="latest"  # You can also use Git commit hash as the tag
 
 # Log in to Docker Hub
 echo "Logging in to Docker Hub..."
-echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USERNAME" --password-stdin
+echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+
 
 # Build the Docker image
 echo "Building Docker image..."

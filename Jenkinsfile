@@ -1,7 +1,10 @@
 pipeline {
     agent any
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+        // dockerhub = credentials('dockerhub')
+        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'mypass', usernameVariable: 'myuser')])
+        // DOCKER_CREDENTIALS = credentials('dockerhub')
+                                                                                        
     }
     stages {
         stage('Checkout') {
@@ -15,7 +18,10 @@ pipeline {
         }
         stage('Build and Push Docker Image') {
             steps {
-                sh './docker_build_and_push.sh'
+                sh '''
+                    echo $mypass | docker login -u $myuser --password-stdin
+                    ./docker_build_and_push.sh
+                    '''
             }
         }
     }

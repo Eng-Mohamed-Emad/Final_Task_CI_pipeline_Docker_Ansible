@@ -4,17 +4,15 @@
 DOCKER_IMAGE_NAME="mohamedemadeldin101/my-weather-app-image"
 DOCKER_TAG="latest"  # You can also use Git commit hash as the tag
 
-# If running in Jenkins, credentials will be automatically provided via Jenkins credentials store
-# If running locally, we will check if credentials are provided via environment variables
-
-# Check if DOCKER_USERNAME and DOCKER_PASSWORD are set (locally or Jenkins credentials)
-if [ -z "$DOCKER_USERNAME" ] || [ -z "$DOCKER_PASSWORD" ]; then
-  echo "Docker username or password not provided! Using Docker CLI login credentials."
-  # If credentials are not set, use Docker CLI default login (if already logged in on the local machine)
-  docker login
-else
+# Check if running in Jenkins, credentials will be automatically provided
+if [ -n "$DOCKER_USERNAME" ] && [ -n "$DOCKER_PASSWORD" ]; then
+  # Jenkins environment variables will have the credentials
   echo "Logging in to Docker Hub with provided credentials..."
   echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+else
+  # If credentials are not set, use Docker CLI default login (local machine login)
+  echo "Docker username or password not provided in Jenkins environment. Attempting local Docker login."
+  docker login
 fi
 
 # Check if login was successful

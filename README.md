@@ -1,3 +1,16 @@
+# Jenkins CI/CD Pipeline for Weather App
+
+This repository includes a `Jenkinsfile` that defines a complete CI/CD pipeline for automating the build, test, and deployment process of the Weather App. The pipeline is designed to work with **Jenkins** and integrates Docker and Docker Hub for containerization and deployment.
+
+## Pipeline Overview
+
+The pipeline consists of the following stages:
+
+1. **Checkout**: Clone the repository from GitHub.
+2. **Build and Push Docker Image**: Build the Docker image for the application and push it to Docker Hub.
+3. **Continuous Deployment (CD)**: Pull and run the Docker image from Docker Hub to deploy the application.
+
+---
 # Weather App 🌤️
 
 This is a simple weather application built using **Flask**, **SQLite**, and the **OpenWeatherMap API**. The app allows users to search for the weather of a specific city, view past searches, and remove cities from the database.
@@ -67,3 +80,5 @@ http://localhost:5000
 ```bash
 pip install -r requirements.txt
 ```
+
+

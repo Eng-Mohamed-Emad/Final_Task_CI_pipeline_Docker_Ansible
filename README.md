@@ -24,7 +24,7 @@ This is a simple weather application built using **Flask**, **SQLite**, and the 
 
 ## Project Structure
 
-<img src="MD/Project%20Structure.png" alt="Cloudy Image" width="500"/> 
+<img src="MD/Project%20Structure.png" alt="Cloudy Image" width="50%"/> 
 
 
 

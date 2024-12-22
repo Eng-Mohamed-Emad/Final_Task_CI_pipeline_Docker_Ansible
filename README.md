@@ -10,4 +10,5 @@ This is a simple weather application built using **Flask**, **SQLite**, and the 
 - **City Management**: You can delete cities from the weather history.
 
 ## Project Structure
+![Cloudy Weather](MD/Project%20Structure.png)
 

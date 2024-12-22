@@ -1,4 +1,4 @@
-# Weather App
+# Weather App 🌤️
 
 This is a simple weather application built using **Flask**, **SQLite**, and the **OpenWeatherMap API**. The app allows users to search for the weather of a specific city, view past searches, and remove cities from the database.
 
@@ -12,3 +12,58 @@ This is a simple weather application built using **Flask**, **SQLite**, and the 
 ## Project Structure
 ![Cloudy Weather](MD/Project%20Structure.png)
 
+
+## Installation
+
+To set up and run the app locally, follow these steps:
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- Python 3.x
+- Docker (optional for containerization)
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/weather-app.git
+cd weather-app
+```
+Install Dependencies
+If you're running the app locally (not in a container), create a virtual environment and install dependencies.
+
+```bash
+python3 -m venv venv
+source venv/bin/activate  # On Windows, use 'venv\Scripts\activate'
+pip install -r requirements.txt
+```
+Set Up the Database
+The application uses SQLite for storing weather data and the last searched city. The database will be automatically created when the app starts, but you can also initialize it manually by running:
+# Running the App
+Start the Flask app:
+```bash
+python3 app.py
+```
+# Docker Setup
+If you prefer to run the app in a Docker container, follow these steps:
+1 - Build the Docker Image:
+```bash
+docker build -t weather-app-container .
+```
+2 - Run the Docker Container:
+```bash
+docker run -d -p 5000:5000 --name weather-app-container my-weather-app
+```
+3 - Visit the app at
+```localhost
+http://localhost:5000
+```
+# Requirements
+ - Flask
+ - requests
+ - sqlite3
+ ### These dependencies are listed in requirements.txt, which you can install using:
+```bash
+pip install -r requirements.txt
+```

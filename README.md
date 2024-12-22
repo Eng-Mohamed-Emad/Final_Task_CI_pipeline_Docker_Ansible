@@ -23,7 +23,10 @@ This is a simple weather application built using **Flask**, **SQLite**, and the 
 - **City Management**: You can delete cities from the weather history.
 
 ## Project Structure
-![Cloudy Weather](MD/Project%20Structure.png)
+
+<img src="MD/Project%20Structure.png" alt="Cloudy Image" width="500"/> 
+
+
 
 
 ## Installation
@@ -80,5 +83,7 @@ http://localhost:5000
 ```bash
 pip install -r requirements.txt
 ```
+<img src="MD/Project%20Overview.jpg" alt="Cloudy Image" width="100%"/>
+
 
 

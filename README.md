@@ -1,1 +1,0 @@
-# Final_Task_CI_pipeline_Docker_Ansible

@@ -1,33 +1,20 @@
-# Use a minimal Python base image
+# Use an official Python runtime as a parent image
 FROM python:3.9-slim
 
-# Set environment variables to improve Python performance and security
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
-# Install essential system dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
-
-# Create and set the working directory
+# Set the working directory in the container
 WORKDIR /app
 
-# Copy only the requirements file for dependency installation
-COPY requirements.txt /app/
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-# Install Python dependencies
+# Install any dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Add a non-root user and switch to it
-RUN useradd -m appuser
-USER appuser
-
-# Copy the application code into the container
-COPY --chown=appuser:appuser . /app/
-
-# Expose the application port (adjust if necessary)
+# Expose port 5000 to the outside world
 EXPOSE 5000
 
-# Specify the default command to run the application
-CMD ["/usr/local/bin/python", "app.py"]
+# Set the environment variable to tell Flask where the app is
+ENV FLASK_APP=app.py
+
+# Run the Flask application
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]

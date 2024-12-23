@@ -35,7 +35,7 @@ pipeline {
             steps {
                 script {
                     sh """
-                        ansible-playbook -i inventory.ini ansible-playbook.yml
+                        ansible-playbook -i inventory.ini deploy_playbook.yml
                     """
                 }
             }

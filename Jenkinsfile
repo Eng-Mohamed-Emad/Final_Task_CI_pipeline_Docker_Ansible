@@ -33,7 +33,7 @@ pipeline {
         }
         stage('Run Ansible Playbook') {
             steps {
-                // Debugging step to check the contents of the workspace
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'mypass', usernameVariable: 'myuser')])
                 sh 'ls -l'  // List files to ensure everything is present
                 
                 // Running the Ansible playbook with Docker credentials passed as environment variables

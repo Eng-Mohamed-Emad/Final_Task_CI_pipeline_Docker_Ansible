@@ -64,9 +64,9 @@
         ports:
           - "5000:5000"
 
-    - name: Docker logout
-      docker_logout:
+    # - name: Docker logout
+    #   docker_logout:
 
-    - name: Debug message
-      debug:
-        msg: "Docker container deployed successfully"
+    # - name: Debug message
+    #   debug:
+    #     msg: "Docker container deployed successfully"

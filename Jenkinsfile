@@ -37,7 +37,6 @@ pipeline {
                 // Debugging step to check the contents of the workspace
                 sh 'ls -l'  // List files to ensure everything is present
                 
-                // Running the Ansible playbook with Docker credentials passed as environment variables
                 sh """
                     chmod 600 ansible-test.pem
                     export ANSIBLE_HOST_KEY_CHECKING=False
@@ -53,19 +52,3 @@ pipeline {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

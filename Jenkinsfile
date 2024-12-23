@@ -6,7 +6,7 @@ pipeline {
                 git(
                     url: 'https://github.com/Eng-Mohamed-Emad/Final_Task_CI_pipeline_Docker_Ansible.git',
                     credentialsId: 'github-credentials',
-                    branch: 'main'
+                    branch: 'Ansible-test'
                 )
             }
         }
@@ -27,6 +27,15 @@ pipeline {
                     sh """
                         docker login -u ${myuser} -p ${mypass}
                         docker run -d -p 5000:5000 --name my-app-container mohamedemadeldin101/my-weather-app-image
+                    """
+                }
+            }
+        }
+        stage('Run Ansible Playbook') {
+            steps {
+                script {
+                    sh """
+                        ansible-playbook -i inventory.ini ansible-playbook.yml
                     """
                 }
             }

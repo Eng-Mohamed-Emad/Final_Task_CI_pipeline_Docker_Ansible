@@ -6,7 +6,7 @@ pipeline {
                 git(
                     url: 'https://github.com/Eng-Mohamed-Emad/Final_Task_CI_pipeline_Docker_Ansible.git',
                     credentialsId: 'github-credentials',
-                    branch: 'Ansible-test'
+                    branch: 'main'
                 )
             }
         }
@@ -33,15 +33,14 @@ pipeline {
         }
         stage('Run Ansible Playbook') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'mypass', usernameVariable: 'myuser')])
+                 
+                // Debugging step to check the contents of the workspace
                 sh 'ls -l'  // List files to ensure everything is present
                 
                 // Running the Ansible playbook with Docker credentials passed as environment variables
                 sh """
                     chmod 600 ansible-test.pem
                     export ANSIBLE_HOST_KEY_CHECKING=False
-                    export DOCKER_USER=${myuser}
-                    export DOCKER_PASS=${mypass}
                     ansible-playbook -i inventory.ini deploy_playbook.yml
                 """
             }
@@ -54,3 +53,19 @@ pipeline {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

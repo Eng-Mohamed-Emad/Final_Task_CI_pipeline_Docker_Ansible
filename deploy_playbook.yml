@@ -45,12 +45,6 @@
         group: docker
         append: yes
 
-    - name: Docker login
-      docker_login:
-        username: "{{ lookup('env', 'DOCKER_USER') }}"
-        password: "{{ lookup('env', 'DOCKER_PASS') }}"
-        registry: "https://index.docker.io/v1/"
-
     - name: Pull the Docker image
       docker_image:
         name: "{{ docker_image }}"
@@ -64,9 +58,6 @@
         ports:
           - "5000:5000"
 
-    # - name: Docker logout
-    #   docker_logout:
-
-    # - name: Debug message
-    #   debug:
-    #     msg: "Docker container deployed successfully"
+    - name: Debug message
+      debug:
+        msg: "Docker container deployed successfully"

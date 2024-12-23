@@ -22,9 +22,12 @@ This is a simple weather application built using **Flask**, **SQLite**, and the 
 - **Last Searched City**: Saves the last searched city and displays it when you return to the homepage.
 - **City Management**: You can delete cities from the weather history.
 
+<img src="MD/architecture.jpg" alt="architecture" width="100%"/> 
+
 ## Project Structure
 
-<img src="MD/Project%20Structure.png" alt="Cloudy Image" width="50%"/> 
+<img src="MD/Project%20Structure.png" alt="Project Structure" width="50%"/> 
+
 
 
 
@@ -75,6 +78,21 @@ docker run -d -p 5000:5000 --name weather-app-container my-weather-app
 ```localhost
 http://localhost:5000
 ```
+# Set Up Ansible
+```bash
+sudo apt update
+sudo apt install ansible
+chmod 600 ansible-test.pem
+
+```
+# Run the Ansible Playbook
+```bash
+ansible-playbook -i inventory.ini deploy_playbook.yml
+```
+### The application should be accessible via 
+```bash
+http://localhost:5000
+```
 # Requirements
  - Flask
  - requests
@@ -83,7 +101,9 @@ http://localhost:5000
 ```bash
 pip install -r requirements.txt
 ```
-<img src="MD/Project%20Overview.jpg" alt="Cloudy Image" width="100%"/>
+<img src="MD/Project%20Overview.jpg" alt="Project Overview" width="100%"/>
+<img src="MD/Project pipline .jpg" alt="Project pipline " width="100%"/>
+
 
 
 

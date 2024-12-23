@@ -33,11 +33,15 @@ pipeline {
         }
         stage('Run Ansible Playbook') {
             steps {
-                script {
-                    sh """
-                        ansible-playbook -i inventory.ini deploy_playbook.yml
-                    """
-                }
+                // Debugging step to check the contents of the workspace
+                sh 'ls -l'  // List files to ensure everything is present
+                
+                // Running the Ansible playbook
+                sh """
+                    export ANSIBLE_HOST_KEY_CHECKING=False
+                    ansible-playbook -i inventory.ini deploy_playbook.yml
+
+                """
             }
         }
     }

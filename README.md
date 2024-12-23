@@ -26,7 +26,7 @@ This is a simple weather application built using **Flask**, **SQLite**, and the 
 
 ## Project Structure
 
-<img src="MD/Project%20Structure.png" alt="Project Structure" width="50%"/> 
+<img src="MD/Project Structure.png" alt="Project Structure" width="50%"/> 
 
 
 
@@ -101,7 +101,7 @@ http://localhost:5000
 ```bash
 pip install -r requirements.txt
 ```
-<img src="MD/Project%20Overview.jpg" alt="Project Overview" width="100%"/>
+<img src="MD/Project Overview.jpg" alt="Project Overview" width="100%"/>
 <img src="MD/Project pipline .jpg" alt="Project pipline " width="100%"/>
 
 
